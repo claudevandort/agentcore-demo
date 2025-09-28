@@ -1,0 +1,4 @@
+.venv
+.dockerignore
+.bedrock_agentcore.yaml
+Dockerfile

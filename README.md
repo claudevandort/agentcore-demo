@@ -21,6 +21,16 @@ source venv/bin/activate
 # Install dependencies
 pip install bedrock-agentcore bedrock-agentcore-starter-toolkit strands-agents strands-agents-tools aws-opentelemetry-distro~=0.10.1
 pip freeze > requirements.txt
+# Run the agent
+python agent.py
+curl -X POST http://localhost:8080/invocations \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "tell me a joke"}'
+# Deploy
+agentcore configure -e agent.py -r us-east-1
+agentcore launch
+# Run remotely
+agentcore invoke '{"prompt": "tell me a joke"}'
 ```
 
 # Resources
